@@ -1,0 +1,1009 @@
+/* Base Styles and Variables */
+:root {
+    --primary-color: #e53935;
+    --secondary-color: #4CAF50;
+    --accent-color: #2196F3;
+    --dark-color: #1a1a1a;
+    --darker-color: #121212;
+    --medium-color: #2a2a2a;
+    --light-color: #3a3a3a;
+    --text-color: #f5f5f5;
+    --text-secondary: #aaaaaa;
+    --underweight-color: #2196F3;
+    --normal-color: #4CAF50;
+    --overweight-color: #FF9800;
+    --obese-color: #e53935;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--darker-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Container and Layout */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* Header & Footer */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--light-color);
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--light-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    width: 100%;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #c62828;
+    transform: translateY(-2px);
+}
+
+.btn-small {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    width: auto;
+}
+
+/* Forms */
+.auth-form {
+    background-color: var(--dark-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    max-width: 500px;
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--light-color);
+    border-radius: 5px;
+    background-color: var(--medium-color);
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+small {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}
+
+/* Dashboard Styles */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background-color: var(--dark-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* BMI Gauge */
+.bmi-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bmi-gauge-container {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 1rem;
+}
+
+.bmi-gauge {
+    width: 100%;
+    height: auto;
+}
+
+.gauge-text {
+    font-size: 14px;
+    fill: var(--text-secondary);
+}
+
+.gauge-value {
+    font-size: 24px;
+    font-weight: bold;
+    fill: var(--text-color);
+}
+
+.bmi-details {
+    text-align: center;
+    width: 100%;
+}
+
+.bmi-scale {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.5rem;
+    position: relative;
+    padding-top: 20px;
+}
+
+.bmi-scale::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(to right, 
+        var(--underweight-color) 0%, 
+        var(--underweight-color) 25%, 
+        var(--normal-color) 25%, 
+        var(--normal-color) 50%, 
+        var(--overweight-color) 50%, 
+        var(--overweight-color) 75%, 
+        var(--obese-color) 75%, 
+        var(--obese-color) 100%);
+    border-radius: 5px;
+}
+
+.scale-mark {
+    text-align: center;
+    position: relative;
+    flex: 1;
+}
+
+.scale-mark span {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.scale-mark label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.underweight span {
+    color: var(--underweight-color);
+}
+
+.normal span {
+    color: var(--normal-color);
+}
+
+.overweight span {
+    color: var(--overweight-color);
+}
+
+.obese span {
+    color: var(--obese-color);
+}
+
+/* Workout and Diet Plan Styles */
+#workout-plan, #diet-plan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.75rem;
+}
+
+.workout-card, .meal-card {
+    background-color: var(--medium-color);
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: var(--transition);
+    margin-bottom: 0;
+}
+
+.workout-card:hover, .meal-card:hover {
+    background-color: var(--light-color);
+}
+
+.workout-title, .meal-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.workout-title .emoji, .meal-title .emoji {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+}
+
+.workout-details, .meal-details {
+    padding-left: 0.75rem;
+}
+
+.workout-details li, .meal-details li {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+/* Gym Workout Plan Styles */
+.gym-workout-plan, .home-workout-plan {
+    margin-top: 1.5rem;
+    background-color: var(--dark-color);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.gym-workout-plan h4, .home-workout-plan h4 {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--light-color);
+    padding-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Workout Preference Selector - integrated within weekly plan */
+.preference-buttons {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.preference-buttons button {
+    background-color: var(--medium-color);
+    border: none;
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preference-buttons button .emoji {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.preference-buttons button:hover {
+    background-color: var(--light-color);
+    transform: translateY(-2px);
+}
+
+.preference-buttons button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.workout-day {
+    margin-bottom: 1.25rem;
+}
+
+.workout-day h5 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.workout-day .workout-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.workout-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--medium-color);
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: var(--transition);
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.workout-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    color: var(--secondary-color);
+    width: 35%;
+    min-width: 160px;
+    padding-right: 0.75rem;
+}
+
+.workout-details {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin: 0;
+    width: 65%;
+    border-left: 1px solid var(--light-color);
+    padding-left: 0.75rem;
+}
+
+.workout-details li {
+    margin-right: 1rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+.workout-details li.description {
+    width: 100%;
+    margin-top: 0.25rem;
+    border-top: 1px dashed var(--light-color);
+    padding-top: 0.25rem;
+}
+
+.workout-note, .workout-tips {
+    background-color: var(--medium-color);
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.workout-tips h5 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.workout-tips ul {
+    padding-left: 1.25rem;
+}
+
+.workout-tips ul li {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+/* Workout Ads */
+.workout-ads {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1.25rem;
+}
+
+.ad-banner {
+    background-color: var(--dark-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.ad-banner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.ad-link {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+}
+
+.ad-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.ad-content {
+    padding: 0.75rem;
+}
+
+.ad-title {
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+}
+
+.ad-description {
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+.ad-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.ad-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Media Queries for Responsive Design */
+@media (min-width: 768px) {
+    .bmi-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .bmi-gauge-container {
+        width: 40%;
+        margin-right: 2rem;
+        margin-bottom: 0;
+    }
+    
+    .bmi-details {
+        width: 60%;
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .bmi-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .bmi-gauge-container {
+        width: 100%;
+        margin-right: 0;
+        max-width: 250px;
+    }
+    
+    .bmi-details {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .dashboard-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .dashboard-header button {
+        margin-top: 1rem;
+    }
+    
+    .workout-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .workout-title {
+        width: 100%;
+        min-width: auto;
+        margin-bottom: 0.5rem;
+        padding-right: 0;
+    }
+    
+    .workout-details {
+        width: 100%;
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--light-color);
+        padding-top: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .preference-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .preference-buttons button {
+        width: 100%;
+    }
+    
+    .weekly-workout-plan h4.plan-title {
+        margin-top: 0.5rem;
+        padding-top: 1rem;
+    }
+}
+
+/* Daily Exercises Layout */
+#workout-plan > .workout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.75rem;
+}
+
+#workout-plan > .workout-grid .workout-card {
+    display: block;
+}
+
+#workout-plan > .workout-grid .workout-title {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+#workout-plan > .workout-grid .workout-details {
+    width: 100%;
+    border-left: none;
+    padding-left: 1rem;
+    display: block;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .workout-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .workout-title {
+        width: 100%;
+        min-width: auto;
+        margin-bottom: 0.5rem;
+        padding-right: 0;
+    }
+    
+    .workout-details {
+        width: 100%;
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--light-color);
+        padding-top: 0.5rem;
+    }
+}
+
+/* Weekly Workout Plan Styles */
+.weekly-workout-plan {
+    background-color: var(--dark-color);
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+.weekly-workout-plan h4 {
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.weekly-workout-plan h4.plan-title {
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--light-color);
+    padding-top: 1.25rem;
+    border-bottom: 1px solid var(--light-color);
+    padding-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* Workout Days Container - Column Layout */
+.workout-days-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--light-color) var(--dark-color);
+    padding: 0.5rem;
+}
+
+.workout-days-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.workout-days-container::-webkit-scrollbar-track {
+    background: var(--darker-color);
+    border-radius: 8px;
+}
+
+.workout-days-container::-webkit-scrollbar-thumb {
+    background-color: var(--light-color);
+    border-radius: 8px;
+}
+
+.workout-day-column {
+    flex: 0 0 auto;
+    width: 200px;
+    background-color: var(--medium-color);
+    border-radius: 8px;
+    padding: 0.75rem;
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.workout-day-column:hover {
+    background-color: var(--light-color);
+    transform: translateY(-3px);
+}
+
+.workout-day-column h5 {
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    text-align: center;
+    border-bottom: 1px dashed var(--light-color);
+    padding-bottom: 0.5rem;
+}
+
+.day-exercises {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.day-exercise {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    background-color: var(--dark-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.exercise-emoji {
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
+}
+
+.exercise-name {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+.exercise-detail {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .workout-days-container {
+        padding-bottom: 1rem;
+    }
+    
+    .workout-day-column {
+        width: 160px;
+    }
+}
+
+.workout-tips {
+    margin-top: 1.5rem;
+}
+
+/* Remove the separate workout-preference styles since they're now merged */
+.workout-preference {
+    display: none;
+}
+
+/* Detailed Diet Plan Styles */
+.detailed-diet-plan {
+    background-color: var(--dark-color);
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    margin-top: 1.5rem;
+}
+
+.detailed-diet-plan h4.plan-title {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--light-color);
+}
+
+.meal-times-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.meal-time {
+    background-color: var(--medium-color);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: var(--transition);
+}
+
+.meal-time:hover {
+    background-color: var(--light-color);
+    transform: translateY(-3px);
+}
+
+.meal-time h5 {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--light-color);
+    padding-bottom: 0.5rem;
+}
+
+.meal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.meal-option {
+    background-color: var(--dark-color);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.diet-notes {
+    margin-top: 1.75rem;
+    background-color: var(--medium-color);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.diet-notes h5 {
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+}
+
+.diet-notes ul {
+    padding-left: 1.5rem;
+}
+
+.diet-notes li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.diet-preference {
+    background-color: var(--dark-color);
+    padding: 1.25rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.diet-preference h4 {
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Media Queries for Diet Plans */
+@media (max-width: 768px) {
+    .meal-option {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+    
+    .meal-time h5 {
+        font-size: 1rem;
+    }
+    
+    .detailed-diet-plan h4.plan-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* BMI Calculator Button and Modal */
+.bmi-calculator-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.bmi-calculator-btn:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--dark-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+.calc-result {
+    background-color: var(--medium-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.calc-result h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+/* Position context for BMI section */
+#bmi-section {
+    position: relative;
+}
+
+/* BMI Calculator in Diet Section */
+.diet-bmi-calculator {
+    margin-top: 1.5rem;
+    text-align: center;
+    background-color: var(--dark-color);
+    padding: 1.25rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.diet-bmi-calculator p {
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+}
+
+#diet-bmi-calculator-btn {
+    width: auto;
+    margin: 0 auto;
+    background-color: var(--accent-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#diet-bmi-calculator-btn:hover {
+    background-color: var(--primary-color);
+}
+
+#diet-bmi-calculator-btn::before {
+    content: '📊';
+    font-size: 1.2rem;
+}
+
+/* Remove the styles for the update profile button */
+#update-profile-btn {
+    display: none;
+}
+
+#update-profile-btn:hover {
+    display: none;
+} 
